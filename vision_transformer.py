@@ -104,7 +104,7 @@ class Block(nn.Module):
         mlp_hidden_dim = int(dim * mlp_ratio)
         self.mlp = Mlp(in_features=dim, hidden_features=mlp_hidden_dim, act_layer=act_layer, drop=drop)
 
-    def forward(self, x, return_attention=False):
+    def forward(self, x: torch.Tensor, return_attention: bool=False) -> torch.Tensor:
         y, attn = self.attn(self.norm1(x))
         if return_attention:
             return attn
